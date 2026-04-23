@@ -1,0 +1,52 @@
+<app-my-header name="Лабораторна робота №3"></app-my-header>
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Завдання 1. Скласти програму з абстрактним батьківським класом і двома
+        об'єктами – нащадками. Інформація про класи зберігається у JSON файлі, що
+        зберігається у хмарі.</p>
+      <p>Реалізувати циклічне виведення параметрів об&#39;єктів, використовуючи поліморфний контейнер - масив об'єктів
+        базового класу. </p>
+      <p>Завдання 2. Виконати обрахунки відповідно до варіанту</p>
+      <p>Завдання за варіантом. Знайти транспортні засоби дальність поїздки яких більше за введено число.</p>
+      <ion-item>
+        <ion-input label="Введіть дальність поїздки" type="number" min="1" [(ngModel)]="r"></ion-input>
+      </ion-item>
+      <ion-button (click)="findByRange()">Знайти</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Всі транспортні засоби</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      @for (v of vehicles; track v) {
+      <ion-item>
+        <p>{{ v.displayInfo() }}</p>
+      </ion-item>
+      }
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Результати</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      @if (filteredVehicles.length === 0) {
+      <ion-item>
+        <p>Нічого не знайдено</p>
+      </ion-item>
+      }
+      @for (v of filteredVehicles; track v) {
+      <ion-item>
+        <p>{{ v.displayInfo() }}</p>
+      </ion-item>
+      }
+    </ion-card-content>
+  </ion-card>
+</ion-content>
